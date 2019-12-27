@@ -1,4 +1,4 @@
-# roblox-long-polling
+# rbxwebhook.js
 
 Simple event communication between Roblox servers and Node.js
 
@@ -6,19 +6,34 @@ Simple event communication between Roblox servers and Node.js
 
 #### Server
 ```
-npm install --save roblox-long-polling
+npm install --save rbxwebhook.js
 ```
 
 #### Client
 
-Put the contents of [client.lua](https://github.com/Reselim/roblox-long-polling/blob/master/client.lua) inside of a ModuleScript.
+Put the contents of [client.lua](https://github.com/uhteddy/rbxwebhook.js/blob/master/client.lua) inside of a ModuleScript.
 
 ## Example
 
 #### Server
 
 ```js
-var longPolling = require("roblox-long-polling");
+// MainScript
+var express = require("express")
+
+var app = express();
+
+app.use('/rbxwebhook', require(../PATH/TO/JS/FILE))
+
+app.get('/', (req, res) => {
+  res.send("Howdy")
+});
+
+
+app.listen(3000);
+
+//JS File
+var longPolling = require("rbxwebhook.js");
 var server = new longPolling();
 
 server.on("connection", (conn) => {
@@ -39,7 +54,7 @@ server.on("connection", (conn) => {
 	});
 });
 
-server.listen(8080);
+module.exports = server.router;
 ```
 
 #### Client
