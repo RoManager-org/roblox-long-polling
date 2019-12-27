@@ -2,9 +2,12 @@
 
 Simple event communication between Roblox servers and Node.js
 
+> Originally created by Reselim but was deprecated.
+
 ## Installation
 
 #### Server
+
 ```
 npm install --save rbxwebhook.js
 ```
