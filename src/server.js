@@ -10,7 +10,8 @@ class LongPollingServer extends EventEmitter {
 
 		this.connections = {};
 
-		var server = express();
+		var server = express.Router();
+		this.router = server;
 
 		// Connect
 
@@ -63,9 +64,6 @@ class LongPollingServer extends EventEmitter {
 		});
 	}
 
-	listen(...args) {
-		this.server.listen(...args);
-	}
 }
 
 module.exports = LongPollingServer;
