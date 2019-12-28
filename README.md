@@ -18,8 +18,9 @@ Put the contents of [client.lua](https://github.com/uhteddy/rbxwebhook.js/blob/m
 
 ## Example
 
-#### Server
+### Server
 
+##### Main Script
 ```js
 // MainScript
 var express = require("express")
@@ -34,8 +35,11 @@ app.get('/', (req, res) => {
 
 
 app.listen(3000);
+```
 
-//JS File
+##### Router File
+
+```//JS File
 var longPolling = require("rbxwebhook.js");
 var server = new longPolling();
 
@@ -60,7 +64,7 @@ server.on("connection", (conn) => {
 module.exports = server.router;
 ```
 
-#### Client
+## Client
 
 ```lua
 local Connection = require(script.Connection)
