@@ -39,7 +39,7 @@ app.listen(3000);
 
 ##### Router File
 
-```//JS File
+```js
 var longPolling = require("rbxwebhook.js");
 var server = new longPolling();
 
