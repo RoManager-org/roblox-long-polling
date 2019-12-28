@@ -21,6 +21,7 @@ Put the contents of [client.lua](https://github.com/uhteddy/rbxwebhook.js/blob/m
 ### Server
 
 ##### Main Script
+
 ```js
 // MainScript
 var express = require("express")
@@ -43,22 +44,22 @@ app.listen(3000);
 var longPolling = require("rbxwebhook.js");
 var server = new longPolling();
 
-server.on("connection", (conn) => {
-	console.log(`New connection (id: ${conn.id})`);
+server.on("connection", conn => {
+  console.log(`New connection (id: ${conn.id})`);
 
-	conn.on("ping", (message) => {
-		console.log(`echo: ${message}`);
-		conn.send("pong", message);
-	});
+  conn.on("ping", message => {
+    console.log(`echo: ${message}`);
+    conn.send("pong", message);
+  });
 
-	conn.on("broadcast", (message) => {
-		console.log(`broadcast: ${message}`);
-		server.broadcast("broadcast", message);
-	});
+  conn.on("broadcast", message => {
+    console.log(`broadcast: ${message}`);
+    server.broadcast("broadcast", message);
+  });
 
-	conn.on("disconnect", () => {
-		console.log(`${conn.id} disconnected`);
-	});
+  conn.on("disconnect", () => {
+    console.log(`${conn.id} disconnected`);
+  });
 });
 
 module.exports = server.router;
@@ -74,6 +75,10 @@ client:connect("127.0.0.1:8080")
 
 client:on("pong", function(message)
 	print("echoed from server: ", message)
+end)
+
+client:on("broadcast", function(message)
+	print("broadcast: ", message)
 end)
 
 client:send("ping", "Hello world!")
