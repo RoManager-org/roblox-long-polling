@@ -71,7 +71,7 @@ module.exports = server.router;
 local Connection = require(script.Connection)
 local client = Connection.new()
 
-client:connect("127.0.0.1:8080")
+client:connect("127.0.0.1:3000/rbxwebhook")
 
 client:on("pong", function(message)
 	print("echoed from server: ", message)
