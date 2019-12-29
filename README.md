@@ -87,3 +87,22 @@ game:BindToClose(function()
 	client:disconnect()
 end)
 ```
+
+# apiKeys
+We now accept apiKeys! It is very simple to implent. All you need to do is add the apiKey option inside of the class you are creatings paremeters.
+
+### Example
+Server:
+
+```js
+const rbxwebhook = require("rbxwebhook.js");
+const server = new rbxwebhook({apiKey: "YOURKEYHERE"});
+```
+
+Client:
+
+```lua
+local rbxwebhook = require(game:GetService("ServerScriptService"):WaitForChild("rbxwebhook"));
+local client = rbxwebhook.new( { apiKey = "YOURKEYHERE" } );
+```
+

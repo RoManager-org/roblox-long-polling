@@ -1,10 +1,12 @@
 local HttpService = game:GetService("HttpService")
 
+local repr = require(script.Parent:WaitForChild("repr"))
+
 local Connection = {}
 Connection.__index = Connection
 
-function Connection.new()
-	local self = setmetatable({}, Connection)
+function Connection.new(options)
+	local self = setmetatable({options = options}, Connection)
 
 	self._events = {}
 
@@ -22,9 +24,25 @@ function Connection:connect(host, secure)
 
 	self.host = host
 	self.secure = not not secure
+	
+	local setValue
+	if (self.options ~= nil ) then
+		setValue = self.options.apiKey or false
+	end
 
-	local json = HttpService:GetAsync(self:_url("/connect"))
-	local response = HttpService:JSONDecode(json)
+	local json = HttpService:RequestAsync(
+		{
+			Url = self:_url("/connect"),
+			Method = "GET",
+			Headers = {
+				["Authorization"] = setValue
+			}
+		}
+	)
+	
+	local response = HttpService:JSONDecode(json.Body)
+	
+	print(repr(response))
 
 	if response.id then
 		self.Id = response.id
