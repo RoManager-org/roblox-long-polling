@@ -1,7 +1,5 @@
 local HttpService = game:GetService("HttpService")
 
-local repr = require(script.Parent:WaitForChild("repr"))
-
 local Connection = {}
 Connection.__index = Connection
 
@@ -41,8 +39,6 @@ function Connection:connect(host, secure)
 	)
 	
 	local response = HttpService:JSONDecode(json.Body)
-	
-	print(repr(response))
 
 	if response.id then
 		self.Id = response.id
