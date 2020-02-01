@@ -1,4 +1,5 @@
 # rbxwebhook.js
+[![DeepScan grade](https://deepscan.io/api/teams/7242/projects/9370/branches/121237/badge/grade.svg)](https://deepscan.io/dashboard#view=project&tid=7242&pid=9370&bid=121237)
 
 Simple event communication between Roblox servers and Node.js
 
