@@ -20,9 +20,6 @@ class rbxwebhookserver extends EventEmitter {
           // checks if apiKey exists in the options.
           var setKey = options["apiKey"];
           var checkedKey = req.headers.authorization;
-          console.log(setKey);
-          console.log(checkedKey);
-          console.log(req.headers);
           if (setKey === checkedKey) {
             // Authentication was a success and can continue to connect.
             next();
