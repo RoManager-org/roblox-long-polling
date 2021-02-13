@@ -1,6 +1,6 @@
 {
-	"name": "romanager-game-server",
-	"version": "0.8.0",
+	"name": "roblox-long-polling",
+	"version": "1.0.0",
 	"main": "index.js",
 	"license": "MIT",
 	"author": "uhTeddy <uhteddy@oquo.tech>, Reselim <reselimiscool@gmail.com>, jaydensar <jayden@jaydensar.net>",
