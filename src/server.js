@@ -13,31 +13,7 @@ class rbxwebhookserver extends EventEmitter {
 
 		const server = express.Router();
 
-		const checkAuthentication = (req, res, next) => {
-			if (options !== undefined) {
-				// There are avaliable options to read through.
-				if (options['apiKey']) {
-					// checks if apiKey exists in the options.
-					const setKey = options['apiKey'];
-					const checkedKey = req.headers.authorization;
-					if (setKey === checkedKey) {
-						// Authentication was a success and can continue to connect.
-						next();
-					} else {
-						// Authentication failed.
-						res.status(401).json({
-							error: 'Authentication failed.',
-						});
-					}
-				} else {
-					// if it doesn't we're going to authenticate because there are no protections
-					next();
-				}
-			} else {
-				// There are no options so we are just going to authenticate any request.
-				next();
-			}
-		};
+		const checkAuthentication = options.checkAuthentication;
 
 		// Connect
 		server.get('/connect', checkAuthentication, (req, res) => {
