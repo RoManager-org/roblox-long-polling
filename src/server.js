@@ -18,6 +18,7 @@ class rbxwebhookserver extends EventEmitter {
 		// Connect
 		server.get('/connect', checkAuthentication, (req, res) => {
 			const connection = new Connection();
+			connection.req = req;
 			this.connections[connection.id] = connection;
 			this.emit('connection', connection);
 
